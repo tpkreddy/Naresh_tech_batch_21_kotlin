@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+   <!--Write comments for other developers to understand your code-->
+    <!--You need a button-->
+    <!--When the buttons are clicked, you need to perfrom an action
+    in this case, we shall invoke a method on kotlin file.-->
+    <Button
+        android:text="+"
+        android:backgroundTint="@color/button_background"
+        android:onClick="incrementScore"
+        android:layout_weight="1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <!-- If you need to show text to the user, use TextView -->
+    <!-- You can write comment -->
+    <TextView
+        android:id="@+id/result"
+        android:textSize="100sp"
+        android:textStyle="bold"
+        android:background="@color/textview_background"
+        android:textColor="@color/textview_text_color"
+        android:text="0"
+        android:gravity="center"
+        android:layout_weight="9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <Button
+        android:text="-"
+        android:backgroundTint="@color/button_background"
+        android:onClick="decrementScore"
+        android:layout_weight="1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>
