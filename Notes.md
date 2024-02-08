@@ -15,5 +15,21 @@ This onSaveInstanceState() method is going to save the values during the configu
 
 Explore more about onSaveInstanceState [here](https://developer.android.com/topic/libraries/architecture/saving-states)
 
+### The UI Components in Android
+
+- Button
+- EditText / TextInputLayout & TextInputEditText - used to take input from the user (TextBox)
+- RadioButtons (Used to let the user select an option from mutually exlusive option)
+- CheckBoxes (these are again options where you can select multiple)
+- Spinner (DropDown menu)
+- Switch (Toggles between on and off states)
+- Textview
+
+[try this link](https://developer.android.com/develop/ui/views/layout/declaring-layout) to experiment on UI of android. 
+
+Refer to the Material Design Components and How to use them in this [link](https://github.com/material-components/material-components-android/blob/master/docs/components/TextField.md)
+
+
+
 
 
