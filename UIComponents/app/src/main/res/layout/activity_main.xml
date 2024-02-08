@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!--If you want to read the text from the user, you must be using EditText-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/person_name"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:hint="Enter Your name"
+        android:layout_height="75dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:hint="Enter Your age"
+        android:layout_height="75dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:inputType="number"
+            android:layout_height="match_parent"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RadioGroup
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:text="Gender"
+            android:layout_height="match_parent"/>
+
+        <RadioButton
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            />
+
+        <RadioButton
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female"
+            />
+
+    </RadioGroup>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
