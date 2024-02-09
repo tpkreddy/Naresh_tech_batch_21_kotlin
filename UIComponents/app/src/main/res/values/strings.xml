@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">UI Components</string>
+
+    <string-array name="countires">
+        <item>Select Your country</item>
+        <item>India</item>
+        <item>Srilanka</item>
+        <item>USA</item>
+        <item>UK</item>
+        <item>Singapore</item>
+        <item>Pakistan</item>
+        <item>Russia</item>
+        <item>Germany</item>
+        <item>China</item>
+        <item>Japan</item>
+    </string-array>
 </resources>

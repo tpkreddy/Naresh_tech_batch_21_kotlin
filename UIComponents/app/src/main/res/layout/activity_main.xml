@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.appcompat.widget.LinearLayoutCompat
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:rotation="-20"
+        android:gravity="center"
+        android:textSize="28sp"
+        android:textColor="#00004A"
+        android:text="Register"
+        android:fontFamily="cursive"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
     <!--If you want to read the text from the user, you must be using EditText-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/person_name"
@@ -23,6 +36,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/person_age"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:hint="Enter Your age"
@@ -36,6 +50,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <RadioGroup
+        android:id="@+id/gender_group"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -49,6 +64,7 @@
             android:layout_height="match_parent"/>
 
         <RadioButton
+            android:id="@+id/male"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,6 +72,7 @@
             />
 
         <RadioButton
+            android:id="@+id/female"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,4 +81,75 @@
 
     </RadioGroup>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Languages"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <CheckBox
+            android:id="@+id/eng"
+            android:text="English"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <CheckBox
+            android:id="@+id/hin"
+            android:layout_weight="1"
+            android:text="Hindi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <CheckBox
+            android:id="@+id/tam"
+            android:layout_weight="1"
+            android:text="Tamil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner"
+        android:entries="@array/countires"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch_tog"
+        android:layout_margin="5dp"
+        android:text="Open for Rotational Shift"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_gravity="center"
+        android:background="@drawable/button_shape"
+        android:text="Submit"
+        android:onClick="registerWithData"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/result"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="#0000ff"
+        android:text="Contents here"
+        android:textStyle="italic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>
