@@ -63,3 +63,53 @@ Here's a table summarizing the key differences:
 
 Great [e-book](https://git-scm.com/book/en/v2) to read to learn everything about git and how to use it for github or any other hosting platform such as gitlab, bitbucket and etc.,
 
+**Commands On Git - Initial Set Up**
+
+Two basic commands to run
+1. Would let git know who you are
+- git config --global user.name "Your Name"
+- git config user.name
+
+2. Would let git know your email id 
+- git config --global user.email "youremail@google.com"
+- git config user.email 
+
+**Commands on Git - Local SCM**
+*What is a repository ?*
+
+*A Git repository, in its strict definition, refers to the .git folder within your project directory. This hidden folder stores all the metadata Git uses to track changes, branches, commits, and the revision history of your project files*
+
+*How do we create a repository ?*
+
+- git init
+
+*Process to follow to store your files in the repository*
+Three Folders (Two Existent, one Imaginary)
+1. Bring all the files (newly created or modified) into a staging area (All the files that are to be saved should be first get moved to staging area) from Working Directory
+2. Commit (save the snapshot) into the repository which saves all the files from staging area
+
+if you want to know, if the project files that you created or modified recently are present in staging area, run the following command
+- git status
+
+Command to move the files to staging area
+- git add filename.extension
+- git add filename1.extension filename2.extension . . .
+- git add .
+
+remove the files from staging area
+- git rm --cached filename.extension
+
+Save the files to repository
+- git commit -m "Short simple message"
+
+**Important Point:** whenever you save the project into the repository a new hash key (that is unique) is generated. Generaly these hashkeys are 40 bit character length. Using these hash keys, you can switch between versions. 
+
+Check the history of your commits
+- git log
+- git log --oneline
+
+Switch between commits
+- git checkout CommitHashKey
+
+
+
