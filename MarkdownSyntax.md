@@ -50,7 +50,7 @@ Unordered Lists
 
 # Highlight the keywords in a paragraph
 
-All kotlin classes are `final` by default.   you need to make the classes `open` before inheriting them. 
+All kotlin classes are `final` by default. </br>you need to make the classes `open` before inheriting them. 
 
 # Codify the code that you want to present
 ```Kotlin
@@ -73,4 +73,10 @@ class Main{
 |---|---|---|
 |1|Pavan|23|
 |2|Kullai Reddy|24|
+
+# Youtube videos
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=A8HvhQ4HnAk
+" target="_blank"><img src="http://img.youtube.com/vi/A8HvhQ4HnAk/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
