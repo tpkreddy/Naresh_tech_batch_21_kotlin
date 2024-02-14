@@ -111,5 +111,29 @@ Check the history of your commits
 Switch between commits
 - git checkout CommitHashKey
 
+**Working with Remote Repositories**
+
+
+*Step 1*: Create a repository on github
+*Step 2*: After creating the repository, get the link of the repository (Important Note: Do not initialize ReadMe.Md).
+*Step 3*: On your local repository add this link as a remote so that push and pull will happen through this link.
+- Check if a remote is available on the local repository
+    - git remote
+- add a new remote using the following command
+    - git remote add var_name link
+    - git remote add gitbasics https://github.com/tpkreddy/Git-Basics.git
+- Push the changes to the remote repository
+    - git push gitbasics 
+- Pull the changes from the remote repository
+    - git pull gitbasics master
+
+---
+
+**Additional Resources to Use**
+[Github Cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf) has all the useful commands
+
+[Github - Markdown syntax cheat sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+
 
 
