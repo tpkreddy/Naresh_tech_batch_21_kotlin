@@ -184,6 +184,37 @@ With the code below you are able to create a stunning design of a registration p
 ```
 Note: Please do not use Scroll view in the design that you are going to do for landscape orientation.
 
+# Intents in Android
+Learn More about Intents [here](https://developer.android.com/guide/components/intents-filters)
+
+Intents are messaging objects that we send to the system (android). Based on the operation you want to perform, your intent will be processed by the system (android)
+
+Intents can primarily be used for three actions
+- Start Activity
+- Start Service
+- Deliver a Broadcast
+
+### Intents are two types
+- Explicit Intent
+- Implicit Intent
+
+### Assignment
+Create an App that takes in the Person name and age as inputs and when the button is pressed, you take the user to the next screen where he will be shown a random information about his personality based on the year he was born.
+
+- 1980 to 1990
+    - Hi Ramesh, You were born in 1982
+    - Middle Aged, The person has more maturity, the person has great talents
+- 1991 to 2000
+    - Hi suresh, You were born in 1999
+    - Young Person, The person is evolving in all aspects, the person is a great companion.
+- 2000 to 2024
+    - Hi Nitin, You were born in 2005
+    - Too young to understand everything. Has a great opportunity to grow in every possible direction. Lot to explore is left. 
+
+Push this project to github as a public repo. share the link to `pavankreddy.t@gmail.com`
+
+Project deadline - 17th of Feb 2024
+
 
 
 

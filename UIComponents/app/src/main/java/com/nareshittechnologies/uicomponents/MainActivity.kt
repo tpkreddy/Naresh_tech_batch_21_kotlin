@@ -68,10 +68,10 @@ class MainActivity : AppCompatActivity(){
             languages = languages + "Tamil\n"
         }
         var g:String = "Male"
-        gender_group.setOnCheckedChangeListener { group, checkedId ->
-            if(checkedId == R.id.male){
+        gender_group.setOnCheckedChangeListener { ge, c ->
+            if(c == R.id.male){
                 g = "Male"
-            }else if(checkedId == R.id.female){
+            }else if(c == R.id.female){
                 g = "Female"
             }
         }

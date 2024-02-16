@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".WishesActivity">
+
+    <ImageView
+        android:src="@drawable/happybday"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"/>
+
+    <TextView
+        android:id="@+id/bdayname"
+        android:layout_width="match_parent"
+        android:text="Pavan"
+        android:gravity="end"
+        android:textSize="60sp"
+        android:layout_margin="10dp"
+        android:textColor="#9E0404"
+        android:textStyle="italic|bold"
+        android:fontFamily="cursive"
+        android:rotation="-20"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
