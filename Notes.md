@@ -216,6 +216,23 @@ Push this project to github as a public repo. share the link to `pavankreddy.t@g
 Project deadline - 17th of Feb 2024
 
 
+**To change the name of the project**
+
+raw -> Values -> Strings.xml
+Change the project name
+
+### Common Intents (Implicit Intents)
+Please refer this [link](https://developer.android.com/guide/components/intents-common)
+
+Assignment: Work with other common intents other than camera.
+
+### Constraint Layout
+ConstraintLayout lets you create large, complex layouts with a flat view hierarchy—no nested view groups. It's similar to RelativeLayout in that all views are laid out according to relationships between sibling views and the parent layout, but it's more flexible than RelativeLayout and easier to use with Android Studio's Layout Editor.
+
+[Read More](https://developer.android.com/develop/ui/views/layout/constraint-layout)about constraint layout here
+
+
+
 
 
 
