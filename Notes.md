@@ -231,8 +231,35 @@ ConstraintLayout lets you create large, complex layouts with a flat view hierarc
 
 [Read More](https://developer.android.com/develop/ui/views/layout/constraint-layout)about constraint layout here
 
+**Activity Life cycle**
+    As a user navigates through, out of, and back to your app, the Activity instances in your app transition through different states in their lifecycle. The Activity class provides a number of callbacks that let the activity know when a state changes or that the system is creating, stopping, or resuming an activity or destroying the process the activity resides in.
+
+![lifecycle](/activity_lifecycle.png)
+
+***onCreate()***
+You must implement this callback, which fires when the system first creates the activity. On activity creation, the activity enters the Created state. In the onCreate() method, perform basic application startup logic that happens only once for the entire life of the activity.
+
+***onStart()***
+When the activity enters the Started state, the system invokes onStart(). This call makes the activity visible to the user as the app prepares for the activity to enter the foreground and become interactive. 
+
+***onResume()***
+When the activity enters the Resumed state, it comes to the foreground, and the system invokes the onResume() callback. This is the state in which the app interacts with the user. The app stays in this state until something happens to take focus away from the app, such as the device receiving a phone call, the user navigating to another activity, or the device screen turning off.
+
+***onPause()***
+The system calls this method as the first indication that the user is leaving your activity, though it does not always mean the activity is being destroyed. It indicates that the activity is no longer in the foreground, but it is still visible if the user is in multi-window mode.
+
+***onStop()***
+When your activity is no longer visible to the user, it enters the Stopped state, and the system invokes the onStop() callback. This can occur when a newly launched activity covers the entire screen. The system also calls onStop() when the activity finishes running and is about to be terminated.
+
+***onDestroy()*** 
+is called before the activity is destroyed. The system invokes this callback for one of two reasons:
+
+The activity is finishing, due to the user completely dismissing the activity or due to finish() being called on the activity.
+The system is temporarily destroying the activity due to a configuration change, such as device rotation or entering multi-window mode.
+
+[Refer to this documentation](https://developer.android.com/guide/components/activities/activity-lifecycle)
 
 
-
+**Activity Stack (TASK)**
 
 
