@@ -262,4 +262,14 @@ The system is temporarily destroying the activity due to a configuration change,
 
 **Activity Stack (TASK)**
 
+**List View Android**
+Displays a vertically-scrollable collection of views, where each view is positioned immediatelybelow the previous view in the list. For a more modern, flexible, and performant approach to displaying lists, use RecyclerView
+
+[Refer here](https://developer.android.com/reference/android/widget/ListView)
+
+**RecyclerView**
+[PPT here](https://docs.google.com/presentation/d/1nFJqH0OSSZmjaycRzEGE6vvsm6jlxghQyoO15KKbkwc/edit#slide=id.gf0dd569a47_0_123)
+
+[Official Documentation](https://developer.android.com/develop/ui/views/layout/recyclerview)
+
 
