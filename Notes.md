@@ -272,4 +272,14 @@ Displays a vertically-scrollable collection of views, where each view is positio
 
 [Official Documentation](https://developer.android.com/develop/ui/views/layout/recyclerview)
 
+### Assignment - RecyclerView
+- Create an app that displays the favorite movies (20 in number) in an alphabetical order. The items on recyclerview should show the movie poster & the movie name. 
+- When the user taps on the recyclerview item, bring the user to details screen that should show the following items related to that movie
+    - Movie Poster
+    - Movie Name
+    - Movie Actors (with images if possible in a horizontally scrollable view)
+    - Synopsis of the movie (simple paragraph)
+- Make sure, you are designing for dark mode theme as well. 
+- Make the app available in multiple languages.
+
 

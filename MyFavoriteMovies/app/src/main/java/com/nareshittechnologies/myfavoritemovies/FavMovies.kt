@@ -1,3 +1,7 @@
 package com.nareshittechnologies.myfavoritemovies
 
-data class FavMovies(val poster:Int, val movie:String, val actors:List<String>)
+import android.os.Parcel
+import android.os.Parcelable
+import java.io.Serializable
+
+data class FavMovies(val poster:Int, val movie:String, val actors:List<String>):Serializable

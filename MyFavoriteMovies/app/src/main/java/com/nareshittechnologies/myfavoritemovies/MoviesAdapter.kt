@@ -1,11 +1,14 @@
 package com.nareshittechnologies.myfavoritemovies
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -36,6 +39,12 @@ class MoviesAdapter(val context: Context, val movies:List<FavMovies>):Adapter<Mo
             s += "$i\n"
         }
         holder.actors.text = s
+
+        holder.v.setOnClickListener { view->
+            Toast.makeText(context,movies.get(position).movie,Toast.LENGTH_LONG).show()
+            val favMovie = movies.get(position)
+            context.startActivity(Intent(context,DetailsActivity::class.java).putExtra("DATA",favMovie))
+        }
     }
 }
 

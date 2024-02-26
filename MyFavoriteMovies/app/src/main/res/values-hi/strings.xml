@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">मेरी पसंदीदा फिल्में</string>
+    <string name="animal">एनिमल</string>
+    <string name="baazigar">बाज़ीगर</string>
+    <string name="chak_de_india">चक दे इंडिया</string>
+    <string name="don">डॉन</string>
+    <string name="ek_villain">एक विलन</string>
+    <string name="furey">फुकरे</string>
+    <string name="gadar">ग़दर</string>
+    <string name="hanu_man">हनु मन</string>
+    <string name="i">ऑय</string>
+    <string name="jackpot">जैकपोट</string>
+</resources>

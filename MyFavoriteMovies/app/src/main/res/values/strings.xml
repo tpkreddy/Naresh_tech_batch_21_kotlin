@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">My Favorite Movies</string>
+    <string name="animal">Animal</string>
+    <string name="baazigar">Baazigar</string>
+    <string name="chak_de_india">Chak de India</string>
+    <string name="don">Don</string>
+    <string name="ek_villain">Ek Villain</string>
+    <string name="furey">Furey</string>
+    <string name="gadar">Gadar</string>
+    <string name="hanu_man">Hanu Man</string>
+    <string name="i">I</string>
+    <string name="jackpot">Jackpot</string>
 </resources>

@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 class MainActivity : AppCompatActivity() {
     // TODO 1: Prepare Data
@@ -22,20 +23,26 @@ class MainActivity : AppCompatActivity() {
         val rv:RecyclerView = findViewById(R.id.recyclerview)
         val a:MoviesAdapter = MoviesAdapter(this,prepareData())
         rv.adapter = a
-        /*rv.layoutManager = LinearLayoutManager(this)*/
-        rv.layoutManager = GridLayoutManager(this,2)
+        /*rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)*/
+        /*rv.layoutManager = GridLayoutManager(this,2)*/
+        rv.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
     }
 
     fun prepareData():List<FavMovies>{
-        return mutableListOf(FavMovies(R.drawable.a,"Animal", listOf("Ranbir","Rashmika")),
-            FavMovies(R.drawable.b,"Baazigar", listOf("Sharukh khan","Kajol")),
-            FavMovies(R.drawable.c,"Chak de India", listOf("Sharukh Khan")),
-            FavMovies(R.drawable.d,"Don", listOf("Amitabh","Zeenat Aman", "Pran")),
-            FavMovies(R.drawable.e,"Ek Villain", listOf("Siddharth Malhotra","Shraddha Kapoor")),
-            FavMovies(R.drawable.f,"Fukrey", listOf("Varun Sharma","Pulkit Samrat")),
-            FavMovies(R.drawable.g,"Gadar", listOf("Sunny deol","Amisha Patel")),
-            FavMovies(R.drawable.h,"Hanu Man", listOf("Teja Sajja","Amritha Nair")),
-            FavMovies(R.drawable.i,"I", listOf("Vikram","Amy Jackson")),
-            FavMovies(R.drawable.j,"Jackpot", listOf("Naseeruddin Shah","Sunny Leone")))
+        return mutableListOf(FavMovies(R.drawable.a,
+            getString(R.string.animal), listOf("Ranbir","Rashmika")),
+            FavMovies(R.drawable.b, getString(R.string.baazigar), listOf("Sharukh khan","Kajol")),
+            FavMovies(R.drawable.c, getString(R.string.chak_de_india), listOf("Sharukh Khan")),
+            FavMovies(R.drawable.d, getString(R.string.don), listOf("Amitabh","Zeenat Aman", "Pran")),
+            FavMovies(R.drawable.e,
+                getString(R.string.ek_villain), listOf("Siddharth Malhotra","Shraddha Kapoor")),
+            FavMovies(R.drawable.f,
+                getString(R.string.furey), listOf("Varun Sharma","Pulkit Samrat")),
+            FavMovies(R.drawable.g, getString(R.string.gadar), listOf("Sunny deol","Amisha Patel")),
+            FavMovies(R.drawable.h,
+                getString(R.string.hanu_man), listOf("Teja Sajja","Amritha Nair")),
+            FavMovies(R.drawable.i, getString(R.string.i), listOf("Vikram","Amy Jackson")),
+            FavMovies(R.drawable.j,
+                getString(R.string.jackpot), listOf("Naseeruddin Shah","Sunny Leone")))
     }
 }
