@@ -282,4 +282,26 @@ Displays a vertically-scrollable collection of views, where each view is positio
 - Make sure, you are designing for dark mode theme as well. 
 - Make the app available in multiple languages.
 
+## Async Task in android for Networking
+
+*AysncTask is deprecated in api level 30*
+[Refer to AsyncTask here](https://docs.google.com/presentation/d/1HVNyrppFuOv-6MgUCIQ-SZyZxLcK4DVKtSyI82T5R6A/edit?resourcekey=0-xuLPU518hMsSLE9bJaJ65Q#slide=id.g116d7d9d49_3_13)
+
+When you start your app, the app runs on a thread called "main thread" or "UI Thread".
+
+***Two Important rules while you work with Threads***
+*Do not block the UI thread*
+- Complete all work in less than 16 ms for each screen
+- Run slow non-UI work on a non-UI thread
+*Do not access the Android UI toolkit from outside 
+the UI thread* 
+- Do UI work only on the UI thread
+
+
+Refer to all the publicly available list of Libraries that we can use for our projects [here](https://github.com/public-apis/public-apis).
+
+
+
+
+
 
