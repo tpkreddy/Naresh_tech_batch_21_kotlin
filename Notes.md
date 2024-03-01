@@ -300,8 +300,60 @@ the UI thread*
 
 Refer to all the publicly available list of Libraries that we can use for our projects [here](https://github.com/public-apis/public-apis).
 
+**JSON - Java script object notation**
 
+JSON stands for JavaScript Object Notation. It's a lightweight, human-readable format used for exchanging data between different systems and programming languages. Here's a breakdown of its key aspects:
 
+Usages:
+
+Data Interchange: JSON is widely used for exchanging data between web servers and web applications. 
+- It facilitates smooth communication by providing a structured way to send and receive information.
+API Communication: Many APIs (Application Programming Interfaces) use JSON to define the format of data they accept or return. This allows developers to easily integrate these APIs into their applications.
+Configuration Files: JSON can be used to store configuration settings for applications or websites. This makes it easier to manage and modify these settings without needing to change the code itself.
+Data Storage: JSON is sometimes used for storing data in files or databases, although for large datasets, other formats might be more efficient.
+Benefits:
+
+Simplicity: JSON is easy to understand and write, even for people with no programming experience.
+Lightweight: Compared to other data formats like XML, JSON is smaller in size, making it faster to transmit and process.
+Language Independence: JSON is not tied to any specific programming language, allowing different programming environments to work with it seamlessly.
+
+***Important Points to remember***
+- {} -> JSONObject
+- [] -> JSONArray
+- "Key":"Value" -> You can get String value through the key
+- "Key":120 -> you can get int value through the key
+
+Get huge response through this URL
+https://www.googleapis.com/books/v1/volumes?q=quilting
+
+### Assignment
+
+Design a google books app with the following guidelines
+- Check if the internet connection is active
+- If not active, show a Snackbar message to the user.
+- If active && connected, Do networking using AsyncTask and fetch the json data for android books from the link
+https://www.googleapis.com/books/v1/volumes?q=quilting
+- Show the book details as follows
+    - title
+    - authors
+    - description
+    - horizontal divider 
+- You can show the aforementioned details on text view
+- do not forget to implement Progress bar just like the way we did it for Jokes app. 
+
+**Advanced Stuff you can do in addition to the Assignment**
+- Display the data on RecyclerView instead of TextView.
+- Load the book thumbnail images on the recyclerview items using Glide or Picasso libraries. 
+
+**Important Note:** With the same model of the assignment above, you can implement several applications
+- Recipe book
+- News App
+- Weather app
+- COVID app
+- etc.,
+
+***How to display images using Glide?***
+[Glide Link](https://bumptech.github.io/glide/#:~:text=Glide%20is%20a%20fast%20and,%2C%20images%2C%20and%20animated%20GIFs.)
 
 
 
