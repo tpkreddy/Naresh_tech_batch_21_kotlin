@@ -382,6 +382,8 @@ REST API -> Representational state transfer Application Programming Interface.
     - UPDATE
 - Important advantage of a REST service is that they consume a very less bandwidth due to the efficient use of JSON data exchange. 
 
+***Assignment***
+This json palce holder can be used to learn how to send various kinds of request, however, this also helps us to work with various other libraries (volley, asyncTask etc.). Try sending a request through volly and async Task.
 
 
 
