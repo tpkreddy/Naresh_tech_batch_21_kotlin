@@ -362,4 +362,26 @@ https://www.googleapis.com/books/v1/volumes?q=quilting
 [documentation](https://github.com/google/gson)
 
 
+## Networking with Retrofit
+[Official doc](https://square.github.io/retrofit/)
+
+[For Fake Rest API visit](https://jsonplaceholder.typicode.com)
+For Get Request -> https://jsonplaceholder.typicode.com/posts/1
+For Post Request -> https://jsonplaceholder.typicode.com/posts
+So the base url could be -> https://jsonplaceholder.typicode.com/
+
+REST API -> Representational state transfer Application Programming Interface.
+- This is a web service
+- When a client (Mobile Application/ Web application) interacts with it, it requests the resources from a server, and the server gives those resources (based on the authenticity of the request). 
+- These services are in place to make the communication between apps of various domains possible. 
+- In A REST, there are a few standard methods that we use
+    - GET
+    - POST
+    - PUT
+    - DELETe
+    - UPDATE
+- Important advantage of a REST service is that they consume a very less bandwidth due to the efficient use of JSON data exchange. 
+
+
+
 
