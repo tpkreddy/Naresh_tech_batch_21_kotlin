@@ -385,5 +385,18 @@ REST API -> Representational state transfer Application Programming Interface.
 ***Assignment***
 This json palce holder can be used to learn how to send various kinds of request, however, this also helps us to work with various other libraries (volley, asyncTask etc.). Try sending a request through volly and async Task.
 
+### Fragments in android
+A Fragment represents a reusable portion of your app's UI. A fragment defines and manages its own layout, has its own lifecycle, and can handle its own input events. Fragments can't live on their own. **They must be hosted by an activity or another fragment**. The fragment’s view hierarchy becomes part of, or attaches to, the host’s view hierarchy.
+
+[How to create a fragment in android](https://developer.android.com/guide/fragments/create)
+
+### Assignment
+Create another fragment on "Fragments in Android" application. That displays data on Recyclerview.
+
+
+
+
+
+
 
 
