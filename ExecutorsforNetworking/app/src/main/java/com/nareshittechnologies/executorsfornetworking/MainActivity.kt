@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     fun fetchData(view: View) {
         val executor = Executors.newSingleThreadExecutor()
         executor.execute {
-            Runnable {
+                Log.d("MAIN", "REACHED HERE")
                 val u:URL = URL("https://www.googleapis.com/books/v1/volumes?q=android")
                 //Establish a connection
                 val connection: URLConnection = u.openConnection()
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     Toast.makeText(applicationContext,builder.toString(),Toast.LENGTH_LONG).show()
                 }
-        } }
+        }
 
     }
 }

@@ -393,6 +393,11 @@ A Fragment represents a reusable portion of your app's UI. A fragment defines an
 ### Assignment
 Create another fragment on "Fragments in Android" application. That displays data on Recyclerview.
 
+### Tab Navigation in Android
+Tab Navigation is also called as lateral navigation in android. Where there will be multiple fragments that gets loaded on a single view pager (that actually acts like a container). On top of the viewpager to transact between the fragments, the user needs to swipe through the screens. When we swipe the existing screen from right to left, we arrive at new screen. If we swipe from left to right, we arrive at the previous screen. 
+
+[Link here](https://developer.android.com/guide/navigation/navigation-swipe-view)
+
 
 
 
