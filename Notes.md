@@ -398,6 +398,23 @@ Tab Navigation is also called as lateral navigation in android. Where there will
 
 [Link here](https://developer.android.com/guide/navigation/navigation-swipe-view)
 
+### Navigation Components Android
+This helps us build complex Navigations in a simple way
+Navigation component is a part of Android Jetpack and it has basic building blocks
+- Navigation Graph - you will have a graph that has two other components
+    - Destinations (typically the fragment files that you want to display to the users)
+    - Actions (they specify for what of kind of interactions from the user, what kinds of destinations to show)
+- Navigation Controller
+    - This controls the whole navigation process
+- Navigation Host
+    - Is typically an activity that hosts all these processes. 
+
+[Offical Documentation link](https://developer.android.com/guide/navigation)
+
+[Youtube video tutorial](https://www.youtube.com/watch?v=NqpyCKlYLVU&t=42s)
+
+[Make sure you complete this codelab](https://developer.android.com/codelabs/android-navigation#0)
+
 
 
 
