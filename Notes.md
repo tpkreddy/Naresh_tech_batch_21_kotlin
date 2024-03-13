@@ -415,6 +415,13 @@ Navigation component is a part of Android Jetpack and it has basic building bloc
 
 [Make sure you complete this codelab](https://developer.android.com/codelabs/android-navigation#0)
 
+### Broadcast Receivers in Android
+[refer](https://developer.android.com/develop/background-work/background-tasks/broadcasts)
+
+[concepts notes](https://google-developer-training.github.io/android-developer-phone-sms-course/Lesson%202/2_p_2_sending_sms_messages.html)
+
+[Implicit Broadcast Exceptions](https://developer.android.com/develop/background-work/background-tasks/broadcasts/broadcast-exceptions#:~:text=As%20part%20of%20the%20Android,are%20exempted%20from%20these%20limitations.)
+
 
 
 
