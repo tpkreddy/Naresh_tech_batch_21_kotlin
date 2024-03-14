@@ -422,6 +422,64 @@ Navigation component is a part of Android Jetpack and it has basic building bloc
 
 [Implicit Broadcast Exceptions](https://developer.android.com/develop/background-work/background-tasks/broadcasts/broadcast-exceptions#:~:text=As%20part%20of%20the%20Android,are%20exempted%20from%20these%20limitations.)
 
+### Custom broadcasts
+- General/ Regular Broadcasts
+    - sendBroadcast(...)
+- Local Broadcasts
+    - LocalBroadcastManager.sendBroadcast(...)
+- Priority Broadcasts
+    - sendOrderedBroadcasts(...)
+
+### SQL - Structured Query Language
+- SQLite -> is a light weight database designed for light weight applications.
+- Typically, SQLite is a file based database.
+- You can perform basic SQL operations for the relational data you have on SQLite
+
+**Basic SQL CRUD Operations**
+C - Create
+R - Read
+U - Update
+D - Delete
+
+You can try these Queries and get output immediately on [this website](https://sqliteonline.com/)
+
+**Create Query**
+- Used to create a table (scheme) to store relational data.
+```SQL
+create TABLE person(person_id integer PRIMARY KEY AUTOINCREMENT, person_name text, person_age integer);
+```
+
+**Insert Query**
+```SQL
+insert into person(person_name, person_age) VALUES ("Pavan", 18), ("Swetha", 17), ("Kumar", 19);
+```
+
+**Read values**
+```SQL
+select * from person;
+```
+
+- Where clause can be used
+```SQL
+select * from person where person_age>17;
+```
+
+- ORDER BY
+```SQL
+select * from person where person_age>17 ORDER BY person_name ASC;
+```
+
+**Delete**
+
+```SQL
+DELETE from person where person_age > 18;
+```
+
+**Update**
+```SQL
+update person set person_name = "Pavan Kumar" where person_id = 1;
+```
+
 
 
 

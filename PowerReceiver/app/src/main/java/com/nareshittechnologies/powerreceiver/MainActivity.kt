@@ -2,7 +2,9 @@ package com.nareshittechnologies.powerreceiver
 
 import android.content.Intent
 import android.content.IntentFilter
+import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         val filter:IntentFilter = IntentFilter()
         filter.addAction(Intent.ACTION_POWER_CONNECTED)
         filter.addAction(Intent.ACTION_POWER_DISCONNECTED)
-
+        filter.addAction(PowerReceiverBroadcast.CUSTOM_BROADCAST)
         registerReceiver(PowerReceiverBroadcast(iv),filter)
 
     }
@@ -27,6 +29,10 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(PowerReceiverBroadcast(iv))
+    }
+
+    fun sendCustomBroadcast(view: View) {
+        sendBroadcast(Intent(PowerReceiverBroadcast.CUSTOM_BROADCAST).putExtra("CUSTOM","Pavan"))
     }
     // TODO 1: create two images that represents battery charging mode and battery draining mode.
     // TODO 2: Create an imageview on activity_main.xml and connect to MainActivity.kt
