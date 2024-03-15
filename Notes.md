@@ -480,6 +480,11 @@ DELETE from person where person_age > 18;
 update person set person_name = "Pavan Kumar" where person_id = 1;
 ```
 
+### Assignment
+- Write Code to update the database table row 
+- Write code to delete a certain row
+- use where clause on selection query to display sorted results.
+
 
 
 
