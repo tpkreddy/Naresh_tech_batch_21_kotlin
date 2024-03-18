@@ -485,6 +485,19 @@ update person set person_name = "Pavan Kumar" where person_id = 1;
 - Write code to delete a certain row
 - use where clause on selection query to display sorted results.
 
+### Content Provider
+[Official Doc Link](https://developer.android.com/guide/topics/providers/content-provider-basics#:~:text=A%20content%20provider%20manages%20access,using%20a%20provider%20client%20object.)
+
+![See the image here](/hello.png)
+
+### Exercise
+Try this app at your end along with inserting of data into database.
+
+### Assignment
+Try to read contacts app database
+[refer to link](https://developer.android.com/training/contacts-provider/retrieve-names)
+
+
 
 
 
