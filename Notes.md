@@ -497,8 +497,16 @@ Try this app at your end along with inserting of data into database.
 Try to read contacts app database
 [refer to link](https://developer.android.com/training/contacts-provider/retrieve-names)
 
+### Notifications in Android
+[refer to the official documentation](https://developer.android.com/develop/ui/views/notifications)
 
+[Pending Intent](https://developer.android.com/privacy-and-security/risks/pending-intent)
+PendingIntent can be created using three ways
 
+PendingIntent.getActivity(...) - if you want to open an activity when the pending intent object is in force.
+PendingIntent.getBroadcast(...) - if you want to send a broadcast when the pending intent object is in force.
+PendingIntent.getService(...) - if you want to start a serive when the pending intent object is in force.
+ 
 
 
 
