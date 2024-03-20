@@ -7,6 +7,7 @@ import android.app.Notification.FLAG_AUTO_CANCEL
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Intent
 import android.graphics.Bitmap
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         // Pending intent is the description of the action to be performed on another component as if it is doing the
         // job on the current context.
         val pi:PendingIntent = PendingIntent.getActivity(this,123,
-            Intent(applicationContext,MainActivity::class.java), FLAG_UPDATE_CURRENT)
+            Intent(applicationContext,MainActivity::class.java), FLAG_IMMUTABLE)
 
         // tODO 5: If you ever want to display an image in a notification, convert the image to bitmap format
         val b:Bitmap = BitmapFactory.decodeResource(resources,R.drawable.notif)
