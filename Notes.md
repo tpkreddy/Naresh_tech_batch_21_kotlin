@@ -507,7 +507,34 @@ PendingIntent.getActivity(...) - if you want to open an activity when the pendin
 PendingIntent.getBroadcast(...) - if you want to send a broadcast when the pending intent object is in force.
 PendingIntent.getService(...) - if you want to start a serive when the pending intent object is in force.
  
+### Job Scheduler in android
+- Intelligent scheduling algorithm.
+- It works based on conditions rather than on time. 
+- Introduced from API 21+ (Lollipop)
+- There is no backwards compatability for this library - Meaning we cannot run the apps that uses jobscheduler on devices below android 21
+[Official Docs](https://developer.android.com/reference/android/app/job/JobScheduler)
 
+- JobService
+    - Is a service class where we perform the task using "onStartJob(...)"
+    - stop a running task using "onStopJob(...)"
+    - These two methods run on Main Thread
+    - if there is any task that may consume more time for execution, you need off load the work to a worker thread from onStartJob(...)
+- JobInfo - Builder pattern to set the conditions for the task.
+- JobScheduler - Schedule and cancel tasks, launch service.
+
+[PPT Link](https://docs.google.com/presentation/d/1UILCEnzR1vurX0XaFV71Ke_yyIhEJ9--iRzwVpYKLwc/edit?resourcekey=0-RTKA4Q5ubz5BcdHZ6gRt-Q#slide=id.g18e75634d0_0_255)
+
+**Small Assignment**
+- Do network operations on a separate thread and use jobscheduler with two conditions. 
+- NETWORK 
+- Charging.
+
+### Work Manager
+[Official Docs](https://developer.android.com/topic/libraries/architecture/workmanager)
+- Is more intelligent than JobScheduler becasue it works for three kinds of tasks
+    - Immediate
+    - Scheduled
+    - Deferable
 
 
 
