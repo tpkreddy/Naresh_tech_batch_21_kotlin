@@ -537,6 +537,37 @@ PendingIntent.getService(...) - if you want to start a serive when the pending i
     - Deferable
 
 
+### MVVM
+- MVVM - Stands for Model, View, ViewModel
+- This is an architectural Pattern like your MVC (Model View Controller)
+- We have been using MVC
 
+**MVC (Model View Controller)**
+In MVC the App is divided into three interconnected components
+- Model : Represents the Data and also the business logic of the application
+- View : Presents the UI and interacts with the user
+- Controller : Acts as an intermediary between Model and View. Handling the User Inputs and updates the model or view accordingly. 
 
+**Example in Android**
+A Simple Android app for displaying a list of Tasks.
+- Model : Data to show the list of tasks (Data & Business Logic)
+- View : RecyclerView
+- Controller : Adapter (you actullay populate data that is given by Model on the View, You respond to the clicks happening on view with the help of Model)
+
+**MVVM**
+MVVM seperates the UI components and Business Logic. Introduces ViewModel, which acts as a mediator between the view and the model. 
+Model Interacts with ViewModel & Your ViewModel interacts with the view. 
+
+**Example in Android**
+A Simple Android app for displaying a list of Tasks.
+- Model : Data to show 
+- View : RecyclerView
+- ViewModel : 
+    - Prepares data to show, Holds UI related logic.
+    - It Observes changes in the model and updates the view Accordingly
+
+Differences
+- DataBinding
+- Responsibiltiy Division
+- Testability 
 
