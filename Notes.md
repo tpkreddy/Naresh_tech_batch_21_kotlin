@@ -571,3 +571,167 @@ Differences
 - Responsibiltiy Division
 - Testability 
 
+### ViewBinding Library 
+View binding is a feature that makes it easier to write code that interacts with views. Once view binding is enabled in a module, it generates a binding class for each XML layout file present in that module. An instance of a binding class contains direct references to all views that have an ID in the corresponding layout.
+
+In most cases, view binding replaces findViewById
+
+[Official Document Link](https://developer.android.com/topic/libraries/view-binding)
+
+- We can avoid a lot of boilerplate code (repetitive code). However it is not easy to eliminate all the boilerplate code that you have. 
+
+### View Model in Android
+The ViewModel class is a business logic or screen level state holder. It exposes state to the UI and encapsulates related business logic. Its principal advantage is that it caches state and persists it through configuration changes. This means that your UI doesn’t have to fetch data again when navigating between activities, or following configuration changes, such as when rotating the screen.
+
+[Official Documentation Link](https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-apis)
+
+### LiveData in Android
+LiveData is an observable data holder class. Unlike a regular observable, LiveData is lifecycle-aware, meaning it respects the lifecycle of other app components, such as activities, fragments, or services. This awareness ensures LiveData only updates app component observers that are in an active lifecycle state.
+
+LiveData considers an observer, which is represented by the Observer class, to be in an active state if its lifecycle is in the STARTED or RESUMED state. LiveData only notifies active observers about updates. Inactive observers registered to watch LiveData objects aren't notified about changes.
+
+[Official Documentation Link](https://developer.android.com/topic/libraries/architecture/livedata#:~:text=LiveData%20notifies%20Observer%20objects%20when,No%20memory%20leaks)
+
+### Room Database
+- Room is a part of Android JetPack components.
+- It is built based on ORM (Object Relational Mapping)
+- This feature (ORM) reduces the effort to write lengthy SQL queries to perfrom CRUD operations on SQL.
+- [Official Doc](https://developer.android.com/training/data-storage/room#kts)
+
+**Basic components of Room Database are as listed below**
+- Entity
+    - An Entity is a dataclass that represents a table
+        - The class name - becomes the table name
+        - the members of the class (variables) - become the coloumn names
+    - You can create as many entities based on the number of tables you want to create.
+- DAO (Database access Object)
+    - Its an interface, that converts the abstract methods to queries based on the annotations you give.
+    - Based on the operations you want to perform, you will be creating the number of abstract methods inside a DAO.
+- RoomDatabase
+    - This class, initializes the database and gives us the power to execute database operations.
+
+**Step 1:** Add the dependencies
+build.gradle (app/module), add the dependencies.
+
+```Kotlin
+implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+```
+
+**Step 2:** Develop the activity_main.xml code.
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/person_name"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Enter Your Name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/person_age"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Enter your Age"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/person_name" />
+
+    <Button
+        android:id="@+id/save_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintEnd_toStartOf="@+id/load_btn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/person_age" />
+
+    <Button
+        android:id="@+id/load_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Load"
+        app:layout_constraintBaseline_toBaselineOf="@+id/save_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/save_btn" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/save_btn" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+**Step 3:** Enable ViewBinding Library
+
+**Step 4:** Create a Entity for Person Table
+```kotlin
+package com.nareshittechnologies.roomdatabase
+
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "person")
+data class PersonTable(
+    @PrimaryKey(autoGenerate = true) val person_id:Int,
+    @ColumnInfo(name = "personname") val person_name:String,
+    val person_age:Int
+)
+```
+
+**Step 5:** Implement Database Access Object Interface
+```kotlin
+package com.nareshittechnologies.roomdatabase
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
+
+@Dao
+interface PersonDAO {
+
+    @Insert
+    fun insertData(p:PersonTable):Unit
+
+    @Query("select * from person")
+    fun getAll():List<PersonTable>
+
+    @Update
+    fun updateData(p:PersonTable):Unit
+}
+```
+
+
+
+
+
