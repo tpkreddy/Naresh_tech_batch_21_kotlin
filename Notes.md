@@ -614,7 +614,7 @@ LiveData considers an observer, which is represented by the Observer class, to b
 build.gradle (app/module), add the dependencies.
 
 ```Kotlin
-implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
 ```
 
@@ -694,41 +694,107 @@ implementation(libs.androidx.room.runtime)
 
 **Step 4:** Create a Entity for Person Table
 ```kotlin
-package com.nareshittechnologies.roomdatabase
+    package com.nareshittechnologies.roomdatabase
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+    import androidx.room.ColumnInfo
+    import androidx.room.Entity
+    import androidx.room.PrimaryKey
 
-@Entity(tableName = "person")
-data class PersonTable(
-    @PrimaryKey(autoGenerate = true) val person_id:Int,
-    @ColumnInfo(name = "personname") val person_name:String,
-    val person_age:Int
-)
+    @Entity(tableName = "person")
+    class PersonTable(person_name: String?, person_age: Int) {
+        @PrimaryKey(autoGenerate = true)
+        val person_id: Int = 0
+        @ColumnInfo(name = "personname")
+        var person_name: String?=person_name
+        var person_age: Int = person_age
+
+    }
 ```
 
 **Step 5:** Implement Database Access Object Interface
 ```kotlin
-package com.nareshittechnologies.roomdatabase
+    package com.nareshittechnologies.roomdatabase
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+    import androidx.room.Dao
+    import androidx.room.Insert
+    import androidx.room.Query
+    import androidx.room.Update
 
-@Dao
-interface PersonDAO {
+    @Dao
+    interface PersonDAO {
 
-    @Insert
-    fun insertData(p:PersonTable):Unit
+        @Insert
+        fun insertData(p:PersonTable):Unit
 
-    @Query("select * from person")
-    fun getAll():List<PersonTable>
+        @Query("select * from person")
+        fun getAll():List<PersonTable>
 
-    @Update
-    fun updateData(p:PersonTable):Unit
-}
+        @Update
+        fun updateData(p:PersonTable):Unit
+    }
+```
+**Step 6:** Create RoomDatabase abstract class.
+```kotlin
+    package com.nareshittechnologies.roomdatabase
+    import androidx.room.Database
+    import androidx.room.RoomDatabase
+
+    @Database(entities = [PersonTable::class], version = 1)
+    abstract class PersonDatabase: RoomDatabase() {
+        abstract fun personDao():PersonDAO
+    }
+```
+
+**Step 7:** Implement the save and load actions on the Database
+```Kotlin
+    package com.nareshittechnologies.roomdatabase
+
+    import android.os.Bundle
+    import androidx.activity.enableEdgeToEdge
+    import androidx.appcompat.app.AppCompatActivity
+    import androidx.core.view.ViewCompat
+    import androidx.core.view.WindowInsetsCompat
+    import androidx.room.Room
+    import com.google.android.material.snackbar.Snackbar
+    import com.nareshittechnologies.roomdatabase.databinding.ActivityMainBinding
+
+    class MainActivity : AppCompatActivity() {
+    lateinit var activityMainBinding:ActivityMainBinding
+    lateinit var room:PersonDatabase
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+            val v = activityMainBinding.root
+            setContentView(v)
+
+            // Initializing the Room database object
+            room = Room.databaseBuilder(applicationContext,PersonDatabase::class.java,"pavan.db")
+                .allowMainThreadQueries()
+                .build()
+
+            activityMainBinding.saveBtn.setOnClickListener {
+                // Save the data to the database
+                val name:String = activityMainBinding.personName.text.toString()
+                val age:Int = activityMainBinding.personAge.text.toString().toInt()
+                // Prepare the dataclass object
+                val p:PersonTable = PersonTable(name,age)
+
+                room.personDao().insertData(p)
+
+                Snackbar.make(it,"Success",Snackbar.LENGTH_LONG).show()
+            }
+
+            activityMainBinding.loadBtn.setOnClickListener {
+                // load the data from the database
+                val persons = room.personDao().getAll()
+                activityMainBinding.result.text = ""
+                for(i in persons){
+                    activityMainBinding.result.append("${i.person_id} ${i.person_name} ${i.person_age}\n")
+                }
+            }
+        }
+    }
 ```
 
 
