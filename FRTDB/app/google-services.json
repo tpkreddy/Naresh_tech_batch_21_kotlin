@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "147976306583",
+    "project_id": "frtdb-real",
+    "storage_bucket": "frtdb-real.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147976306583:android:faeb83d75ac9fddb6a8ed2",
+        "android_client_info": {
+          "package_name": "com.nareshittechnologies.frtdb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFD67vIf2l99Q2MRSwW7hajYQwb4VVKc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

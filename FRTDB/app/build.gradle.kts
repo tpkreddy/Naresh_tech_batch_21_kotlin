@@ -1,15 +1,15 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    kotlin("kapt") version "2.6.1"
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.nareshittechnologies.roomdatabase"
+    namespace = "com.nareshittechnologies.frtdb"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.nareshittechnologies.roomdatabase"
+        applicationId = "com.nareshittechnologies.frtdb"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -27,12 +27,12 @@ android {
             )
         }
     }
-    buildFeatures {
-        viewBinding = true
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding = true
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -40,9 +40,8 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
-    kapt("groupId:artifactId:version")
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation("com.google.firebase:firebase-database-ktx:20.3.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

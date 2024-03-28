@@ -797,6 +797,31 @@ build.gradle (app/module), add the dependencies.
     }
 ```
 
+### Firebase
+Firebase is a google cloud service offering a wide range of features such as build, Monitor and scale up your app. Some popular features include
+
+- Firebase real time databases
+- Firebase Storage
+- Firebase Authentication
+    - Google Signin
+    - Linkedin Sign in
+    - Github sign in
+    - Phone number authentication
+- ML tool kit
+- Crashlytics
+- Remote Configuration
+- Hosting...
+[Link](https://firebase.google.com/) to find out the documentation.
+
+Set up an app in firebase following [this](https://firebase.google.com/docs/android/setup) documentation. 
+find all the firebase dependencies [here](https://firebase.google.com/docs/android/android-play-services).
+
+Click [here](https://firebase.google.com/docs/database/android/start) for Firebase Real Time Database
+
+**Assignment:**Read about NoSQL databases
+
+
+
 
 
 
