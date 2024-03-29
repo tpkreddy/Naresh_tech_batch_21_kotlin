@@ -818,7 +818,11 @@ find all the firebase dependencies [here](https://firebase.google.com/docs/andro
 
 Click [here](https://firebase.google.com/docs/database/android/start) for Firebase Real Time Database
 
-**Assignment:**Read about NoSQL databases
+**Assignment:** Read about NoSQL databases
+
+**Assignment** 
+Display the data from firebase in recyclerview (you need not to show the id). Display two buttons on each item of the Recyclerview (update and delete). When Update button is pressed, present a new form to the users where they can update name and age. 
+
 
 
 

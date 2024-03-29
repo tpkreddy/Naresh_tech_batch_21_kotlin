@@ -11,7 +11,7 @@ interface PersonDAO {
     @Insert
     fun insertData(p:PersonTable):Unit
 
-    @Query("select * from person")
+    @Query("select * from persontable")
     fun getAll():List<PersonTable>
 
     @Update
