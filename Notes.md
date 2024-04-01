@@ -823,8 +823,19 @@ Click [here](https://firebase.google.com/docs/database/android/start) for Fireba
 **Assignment** 
 Display the data from firebase in recyclerview (you need not to show the id). Display two buttons on each item of the Recyclerview (update and delete). When Update button is pressed, present a new form to the users where they can update name and age. 
 
+### CameraX Library
+If you want to work with camera, you have mainly three options
+- Camerax (Google Recommends to  use this)
+- Camera2
+- Camera (Deprecated)
 
+- Camerax reduces the efforts to write device specific codes to use camera
+- Camerax is a part of android's Jetpack components - Built to help make camera based app development easier. 
+- Camerax is backwards compatible till android 5.0 (Api level 21)
 
+[Official documentation](https://developer.android.com/media/camera/camerax)
+
+- Camerax is lifecycle aware.
 
 
 
