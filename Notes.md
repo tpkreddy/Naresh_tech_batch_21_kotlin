@@ -837,7 +837,233 @@ If you want to work with camera, you have mainly three options
 
 - Camerax is lifecycle aware.
 
+### Coroutines
 
+co - Cooperative
+routine - Function
 
+What are coroutines ?
+- If we have multiple long running tasks, you create multiple threads for each one of them. When there are multiple background threads, the system may run **Out Of Memory**. We can create a single background thread and create multiple coroutines to perform the multiple background operations. By Using memory that is required for running one single thread, we can handle multiple background tasks.
+1. Light-Weight threads
+2. Like Threads, coroutines can run in parllel, wait for each other and communicate with each other.
+3. coroutines!=Thread
+4. Coroutines are very cheap (in terms of memory). 
+5. You can create thousands of coroutines without any memory issues. 
 
+### What are threads ?
 
+- Threads are used to execute concurrent tasks, allowing different parts of the program to run independently.
+- Class that can be used for threads is `Thread`
+- Threads allow for parallelism
+- Threads also help to do asynchronous programming. 
+
+#### Simple Program
+
+```Kotlin
+package com.nareshittechnologies.co_routines
+
+import kotlin.concurrent.thread
+
+fun main(){
+    println("Main Program starts: ${Thread.currentThread().name}")
+
+    thread {
+        println("This line is running on:${Thread.currentThread().name}")
+        // Lets fake that this thread is doing some work
+        Thread.sleep(1000)
+        println("This line is running on:${Thread.currentThread().name}")
+    }
+
+    println("Main Program Ends: ${Thread.currentThread().name}")
+}
+```
+
+Note: Threads run in parallel. The program is not finished until your thread finishes its job.
+
+#### Coroutine example
+
+```kotlin
+package com.nareshittechnologies.co_routines
+
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlin.concurrent.thread
+
+fun main(){
+    println("Main Program starts: ${Thread.currentThread().name}")
+
+    GlobalScope.launch {
+        println("This line is running on: ${Thread.currentThread().name}")
+        Thread.sleep(1000)
+        println("This line is running on: ${Thread.currentThread().name}")
+    }
+
+    GlobalScope.launch {
+        println("This line2 is running on: ${Thread.currentThread().name}")
+        Thread.sleep(1000)
+        println("This line2 is running on: ${Thread.currentThread().name}")
+    }
+
+    Thread.sleep(3000)
+
+    println("Main Program Ends: ${Thread.currentThread().name}")
+}
+```
+
+**delay() vs Thread.sleep()**
+
+Thread.sleep(1000) -> blocks the thread for 1 second. Now, the thread gets lazy. 
+
+delay(1000) -> Only suspends the coroutine for 1 second. This is not going to block the thread at all.Hence, Other coroutines can still run while the current coroutine is suspended. 
+
+```kotlin
+package com.nareshittechnologies.co_routines
+
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlin.concurrent.thread
+
+fun main(){
+    println("Main Program starts: ${Thread.currentThread().name}")
+
+    GlobalScope.launch {
+        println("This line is running on: ${Thread.currentThread().name}")
+        delay(1000)
+        println("This line is running on: ${Thread.currentThread().name}")
+    }
+
+    GlobalScope.launch {
+        println("This line2 is running on: ${Thread.currentThread().name}")
+        delay(1000)
+        println("This line2 is running on: ${Thread.currentThread().name}")
+    }
+
+    Thread.sleep(3000)
+
+    println("Main Program Ends: ${Thread.currentThread().name}")
+}
+```
+
+**Suspend** Modifier
+- A Function with `suspend` modifier is known as suspending function. 
+- A Suspending function can only be called from a coroutine context or from another suspending function.
+- They cannot be called from outside a coroutine context. 
+- `delay()` is a suspending function
+
+**Now, you want to block the main thread using a coroutine**
+```kotlin
+runBlocking {// this creates a coroutine that blocks the thread on which it is running
+        delay(3000)
+    }
+```
+
+GlobalScope.launch -> This is a non blocking in nature
+runBlocking -> Blocks the thread in which it operates. 
+
+**Lets create a suspending function**
+```kotlin
+package com.nareshittechnologies.co_routines
+
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlin.concurrent.thread
+
+fun main() = runBlocking {
+    println("Main Starts: ${Thread.currentThread().name}")
+    GlobalScope.launch {
+        println("Thread runs on: ${Thread.currentThread().name}")
+        delay(1000)
+        println("Thread completed on: ${Thread.currentThread().name}")
+        // This statement may run on another thread also.
+    }
+    
+    GlobalScope.launch {
+        println("Thread runs on: ${Thread.currentThread().name}")
+        delay(1000)
+        println("Thread completed on: ${Thread.currentThread().name}")
+        // This statement may run on another thread also.
+    }
+
+    delayForSomeTime(2000)
+
+    println("Main Completes: ${Thread.currentThread().name}")
+}
+
+suspend fun delayForSomeTime(i: Long) {
+    delay(i)
+}
+```
+
+#### Coroutine Builders
+Functions that are used to create coroutines are called coroutine builders.
+
+**Most Important functions to create a coroutine**
+
+1. launch
+    - GlobalScope.launch{} - Creates a coroutine at global (app) level which can survive the entire life cycle of an app.
+    - launch{} - Creates a coroutine in local scope. Meaning, the coroutine created through this scope gets destroyed with the activity. 
+    - This coroutine never blocks the thread in which it is running. 
+2. async
+    - GlobalScope.async{} - Creates a coroutine at a global scope (app level). This survives the entire life cycle of an app. 
+    - async{} - creates a coroutine at a local scope.
+    - This coroutine never blocks the thread in which it is running. 
+3. runBlocking
+    - Blocks the thread in which it is running. 
+
+```Kotlin
+GlobalScope.launch{
+    // file download
+    // Play Music
+}
+```
+
+```Kotlin
+launch{ //recommended
+    // Some data consumption
+    // Login etc.
+}
+```
+
+```kotlin
+package com.nareshittechnologies.co_routines
+
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlin.concurrent.thread
+
+fun main() {
+    Thread{
+
+    }
+    runBlocking {
+        println("Main Starts: ${Thread.currentThread().name}")
+        /*GlobalScope.launch {
+            println("Thread runs on: ${Thread.currentThread().name}")
+            delay(1000)
+            println("Thread completed on: ${Thread.currentThread().name}")
+            // This statement may run on another thread also.
+        }*/
+
+        launch {
+            println("Thread runs on: ${Thread.currentThread().name}")
+            delay(1000)
+            println("Thread completed on: ${Thread.currentThread().name}")
+            // This statement may run on another thread also.
+        }
+
+        delayForSomeTime(2000)
+
+        println("Main Completes: ${Thread.currentThread().name}")
+    }
+}
+
+suspend fun delayForSomeTime(i: Long) {
+    delay(i)
+}
+```
+**Note: launch corotuine builder launches the coroutine in the scope of the parent coroutine**
