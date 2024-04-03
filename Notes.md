@@ -1067,3 +1067,60 @@ suspend fun delayForSomeTime(i: Long) {
 }
 ```
 **Note: launch corotuine builder launches the coroutine in the scope of the parent coroutine**
+
+**launch** coroutine Builder (Fire and forget)
+- Launches a new coroutine without blocking the current thread
+    - Inherits the thread & coroutine scope of the immediate parent coroutine.
+- Returns a reference to the `Job` Object
+- Using this job object, we can cancel the coroutine or wait for the coroutine to finish
+- It works on "Fire and forget" approach meaning that upon the launch, a new coroutine will be created, and it will not return anything to its caler. the started corotuine will keep working in the background. 
+
+#### Async Coroutine builder
+
+```kotlin
+package com.nareshittechnologies.co_routines
+
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlin.concurrent.thread
+
+fun main() {
+    runBlocking {
+        println("Main Starts: ${Thread.currentThread().name}")
+        /*GlobalScope.launch {
+            println("Thread runs on: ${Thread.currentThread().name}")
+            delay(1000)
+            println("Thread completed on: ${Thread.currentThread().name}")
+            // This statement may run on another thread also.
+        }*/
+
+        val job = async {
+            println("Thread runs on: ${Thread.currentThread().name}")
+            delay(1000)
+            println("Thread completed on: ${Thread.currentThread().name}")
+            // This statement may run on another thread also.
+            "I\'m done"
+        }
+
+        /*job.cancel() - can be used to cancel the job*/
+        println(job.isActive)
+        delayForSomeTime(2000)
+        println(job.isActive)
+        println("Main Completes: ${Thread.currentThread().name}")
+    }
+}
+
+suspend fun delayForSomeTime(i: Long) {
+    delay(i)
+}
+
+```
+
+We just changed the launch to async lambda expression. This does not change anything. However, the async function does not return a job object. It returns a `JobDeferred` Object which is the subclass of `Job`.
+
+[Coroutines Codelab](https://developer.android.com/codelabs/kotlin-coroutines#0)
+
