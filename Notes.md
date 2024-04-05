@@ -1124,3 +1124,100 @@ We just changed the launch to async lambda expression. This does not change anyt
 
 [Coroutines Codelab](https://developer.android.com/codelabs/kotlin-coroutines#0)
 
+The issue you're encountering is due to the fact that `data` is a `Deferred` object that can only be awaited once. When you click the button the second time, `data.await()` is called again, but since `data` has already been awaited once, it won't provide the expected result the second time.
+
+To fix this issue, you should create a new `Deferred` object each time you want to fetch data. One way to do this is to move the creation of `data` inside the `fetchData()` function so that a new `Deferred` object is created every time the button is clicked.
+
+Here's how you can modify your code:
+
+```kotlin
+import android.os.Bundle
+import android.widget.ProgressBar
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.nareshittechnologies.co_routines.databinding.ActivityMainBinding
+import kotlinx.coroutines.*
+import java.net.URL
+import java.util.Scanner
+import javax.net.ssl.HttpsURLConnection
+
+class MainActivity : AppCompatActivity() {
+    val fetchJokes = "https://api.chucknorris.io/jokes/random"
+    lateinit var activityMainBinding: ActivityMainBinding
+    lateinit var scope: CoroutineScope
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(activityMainBinding.root)
+
+        // Enable edge-to-edge display
+        enableEdgeToEdge()
+
+        // Set up CoroutineScope
+        scope = CoroutineScope(Dispatchers.Main)
+
+        activityMainBinding.progressBar.visibility = ProgressBar.INVISIBLE
+        activityMainBinding.button.setOnClickListener {
+            fetchData()
+        }
+    }
+
+    private fun fetchData() {
+        activityMainBinding.progressBar.visibility = ProgressBar.VISIBLE
+        scope.launch {
+            val data = fetchDataAsync() // Create a new Deferred object each time fetchData is called
+            try {
+                val d = data.await()
+                activityMainBinding.result.text = d
+            } catch (e: Exception) {
+                Toast.makeText(this@MainActivity, "Error fetching data", Toast.LENGTH_SHORT).show()
+            } finally {
+                activityMainBinding.progressBar.visibility = ProgressBar.INVISIBLE
+            }
+        }
+    }
+
+    private suspend fun fetchDataAsync(): Deferred<String> = scope.async(Dispatchers.IO) {
+        val url = URL(fetchJokes)
+        val connection = url.openConnection() as HttpsURLConnection
+        val inputStream = connection.inputStream
+        val scanner = Scanner(inputStream)
+        val stringBuilder = StringBuilder()
+        while (scanner.hasNext()) {
+            stringBuilder.append(scanner.nextLine())
+        }
+        stringBuilder.toString()
+    }
+
+    // Extension function to enable edge-to-edge display
+    private fun AppCompatActivity.enableEdgeToEdge() {
+        ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(top = systemBars.top, bottom = systemBars.bottom)
+            insets
+        }
+        ViewCompat.requestApplyInsets(window.decorView)
+    }
+}
+```
+
+In this modified version, `fetchDataAsync()` function is introduced to create a new `Deferred` object each time `fetchData()` is called. This ensures that the data fetching operation can be performed multiple times without any issues.
+
+### Services in Android
+- Service runs in the background (not necessarily on a seperate thread) that performs a long running operation.
+- Service does not offer any UI to the user.
+- It is one of the application entry points (Basic building blocks of android).
+
+Types of Services:
+- Foreground Service 
+    - If you want to run a service and let the user know that you are running it.
+        - Typically sends a notification to the user
+        - Music Player, Location Tracking apps, etc.,
+- Background Service
+    - Run in the background and the user is not notified about it
+- Bound Service
+    - Runs a service that is boundable. meaning, we can perform IPC between any component that is bound and the service.
+
+[Official Doc](https://developer.android.com/develop/background-work/services)
+
