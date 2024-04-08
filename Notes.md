@@ -1221,3 +1221,65 @@ Types of Services:
 
 [Official Doc](https://developer.android.com/develop/background-work/services)
 
+### Media Player
+[Official Doc](https://developer.android.com/reference/android/media/MediaPlayer)
+
+
+### Jetpack Compose
+
+- Jetpack Compose is a part of Android Jetpack that accelerates the development of Native UI without need of using Xml Views. Everything you write will be in kotlin. 
+- Reusable code
+- Clean code
+
+[Official Documentation](https://developer.android.com/develop/ui/compose)
+
+[Learn Jetpack UI Compose here](https://developer.android.com/courses/jetpack-compose/course)
+
+**Jetpack Compose**
+
+Modren components for building UI for Android apps.
+
+**Two Approaches in Creating a UI**
+- Imperative Programming approach
+- Declarative Programming approach
+
+**Imperative Style**
+- UI Widget tree that is created by inflating an XML layout file.
+- Each widget here, maintains its internal state and exposes a getter and setter methods to get and set data
+**Declarative Style**
+- Here, the widgets are not objects at all. 
+- Widgets are stateless and does not expose getters and setters.
+- Widgets are created using `Composables` and are updated by calling the same composables with different input arguments. 
+
+**Dynamic Content**
+- `Composables` are all written in kotlin.
+- They can use all the dynamic hooks and branches that kotlin supports.
+- you can use if statements to choose to show a widget or not. You can use for loops to show multiple widgets. 
+- Widgets has full access to the flexibility of kotlin
+
+**Re-composition**
+- Process of re-invoking `Composable` functions when input changes
+- This happens to update the data to the UI as the data got changed.
+- Expensive operation. 
+- That is the reason, koltin does not re-compose everything on UI. Instead, what ever is changed, that is re-composed. 
+
+**Composables**
+- Can execute in any order
+- Can execute in parallel
+- Re-composition skips as many composables as possible to avoid weight to put on the memory. 
+- Re-composition is optimistic and may be cancelled. 
+- This re-composition can also run very frequently (frame by frame)
+- Compose has the option of identifying some composables that are higher priority than others. 
+- You are not supposed to add composables in the order (because they can run in parallel)
+
+***All Annotations and Composable function names usually starts with a capital letter: eX: Composable, Preview***
+```kotlin
+setContent{
+     Text("Naresh Technologies",
+                fontStyle = FontStyle.Italic,
+                fontWeight = FontWeight.Bold,
+                fontSize = 30.sp,
+                fontFamily = FontFamily.Cursive,
+                color = Color.Blue)
+}
+```

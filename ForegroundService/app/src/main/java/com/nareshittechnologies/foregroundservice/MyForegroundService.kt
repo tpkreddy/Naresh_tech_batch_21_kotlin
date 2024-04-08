@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.IBinder
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
@@ -11,6 +12,13 @@ import androidx.core.app.NotificationCompat
 class MyForegroundService : Service() {
 
     lateinit var nm:NotificationManager
+    lateinit var player:MediaPlayer
+
+    override fun onCreate() {
+        super.onCreate()
+        player = MediaPlayer.create(this,R.raw.mysong)
+    }
+
     override fun onBind(intent: Intent): IBinder {
         return null!!
     }
@@ -21,8 +29,10 @@ class MyForegroundService : Service() {
 
         if(intent?.action == "MYACTION"){
             nm.cancel(32)
+            player.stop()
             stopSelf()
         }else{
+            player.start()
             sendNotification()
         }
 
