@@ -1283,3 +1283,94 @@ setContent{
                 color = Color.Blue)
 }
 ```
+
+[Understanding Row, Column and Box](https://developer.android.com/develop/ui/compose/layouts/basics)
+### How Box (Composable function) works ?
+```kotlin
+Box(modifier = Modifier.fillMaxSize()) {
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.align(Alignment.TopStart)) {
+                Text(text = "Button 1")
+            }
+
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.align(Alignment.CenterStart)) {
+                Text(text = "Button 2")
+            }
+
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.align(Alignment.Center)) {
+                Text(text = "Button 3")
+            }
+
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.align(Alignment.TopEnd)) {
+                Text(text = "Button 4")
+            }
+
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.align(Alignment.CenterEnd)) {
+                Text(text = "Button 5")
+            }
+
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.align(Alignment.BottomStart)) {
+                Text(text = "Button 6")
+            }
+
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.align(Alignment.BottomCenter)) {
+                Text(text = "Button 7")
+            }
+
+            Button(onClick = { /*TODO*/ },
+                modifier = Modifier.align(Alignment.BottomEnd)) {
+                Text(text = "Button 8")
+            }
+        }
+```
+
+**The code below generates a profile design where the image is shown on the left, the person name and person designtion is shown on the right in coloumn**
+
+```Kotlin
+Surface(color = Color.Blue,
+            contentColor = contentColorFor(Color.White),
+            modifier = Modifier.padding(all = 8.dp)) {
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .padding(all = 8.dp),
+                verticalAlignment = Alignment.CenterVertically) {
+                Image(painter = painterResource(id = R.drawable.profile),
+                    contentDescription = "Profile Picture",
+                    modifier = Modifier
+                        .size(150.dp)
+                        .clip(CircleShape))
+
+                Column(modifier = Modifier.weight(1f),
+                    horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(text = "Mirinda",
+                        fontSize = 30.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White)
+
+                    Text(text = "Popular Artist",
+                        fontSize = 10.5.sp,
+                        fontStyle = FontStyle.Italic,
+                        color = Color.White)
+                }
+            }
+        }
+```
+
+**You can create multiple views by dynamically creating them using for loop**
+
+```kotlin
+JUICAppTheme {
+                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                    for(i in 1..7){
+                        DisplayButtons()
+                    }
+                }
+            }
+```
+
