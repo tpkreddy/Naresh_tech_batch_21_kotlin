@@ -1374,3 +1374,24 @@ JUICAppTheme {
             }
 ```
 
+**Learn JetpackUI Compose** [here](https://developer.android.com/courses/android-basics-compose/unit-1?_gl=1*co2d3i*_up*MQ..&gclid=CjwKCAjwt-OwBhBnEiwAgwzrUvFA6Shpjo9VC-FZFXOZRm9Fg1u_7BXO5LKvLg6nE2vLqTOVVwFFGhoC58sQAvD_BwE&gclsrc=aw.ds)
+
+***Google Maps***
+
+**Types of Location Access**
+
+- Allow Only while using the app
+    - also known as "While in use" or "Foreground only" access.
+    - Added in android 10
+
+- Allow one-time
+
+- Allow all time (you have to be complient with Google Location Policies)
+
+- Deny
+
+**Location Providers**
+1. NETWORK_PROVIDER -> ACCESS_COARSE_LOCATION
+2. GPS_PROVIDER -> ACCESS_FINE_LOCATION
+
+

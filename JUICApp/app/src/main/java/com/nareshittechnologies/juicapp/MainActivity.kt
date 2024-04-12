@@ -24,6 +24,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -44,51 +48,47 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JUICAppTheme {
-                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                    for(i in 1..7){
-                        DisplayButtons()
-                    }
-                }
+                DisplayButtons()
             }
         }
     }
 
     @Composable
     fun DisplayButtons(){
-        Surface(color = Color.Blue,
-            contentColor = contentColorFor(Color.White),
-            modifier = Modifier.padding(all = 8.dp)) {
-            Row(modifier = Modifier
+            var count by remember {
+                mutableStateOf(0)
+            }
+            Column(modifier = Modifier
                 .fillMaxWidth()
-                .padding(all = 8.dp),
-                verticalAlignment = Alignment.CenterVertically) {
-                Image(painter = painterResource(id = R.drawable.profile),
-                    contentDescription = "Profile Picture",
-                    modifier = Modifier
-                        .size(150.dp)
-                        .clip(CircleShape))
+                .fillMaxSize()
+                .padding(all = 8.dp)
+            ) {
+                Button(onClick = { count++ }, modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)) {
+                    Text(text = "+")
+                }
 
-                Column(modifier = Modifier.weight(1f),
-                    horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(text = "Mirinda",
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White)
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.Yellow)
+                    .weight(9f),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center) {
 
-                    Text(text = "Popular Artist",
-                        fontSize = 10.5.sp,
-                        fontStyle = FontStyle.Italic,
-                        color = Color.White)
+                    Text(text = "${count}",
+                        fontSize = 100.sp,
+                        fontWeight = FontWeight.Bold
+                    )
 
-                    Button(onClick = {
-                        Toast.makeText(applicationContext,"Button is clicked",Toast.LENGTH_LONG).show()
-                    }) {
-                        Text(text = "Click Me")
-                    }
+                }
+                
+                Button(onClick = { count-- }, modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)) {
+                    Text(text = "-")
                 }
             }
-        }
-
     }
 
     @Preview(showBackground = true)
